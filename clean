@@ -1,0 +1,5 @@
+rm db/development.sqlite3
+rm -r db/migrate
+find app/controllers/ -name "*.rb" | xargs rm
+find app/models/ -name "*.rb" | xargs rm
+ls app/views/ | xargs rm -r
