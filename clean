@@ -1,5 +1,10 @@
 rm db/development.sqlite3
 rm -r db/migrate
-find app/controllers/ -name "*.rb" | xargs rm
-find app/models/ -name "*.rb" | xargs rm
-ls app/views/ | xargs rm -r
+find app/controllers -name "*.rb" ! -name "application_controller.rb" | xargs rm
+find app/models -name "*.rb" ! -name "application_record.rb" | xargs rm
+find . -type d ! -name "layouts" | grep "./app/views//*" | xargs rm -r
+
+find test/controllers -name "*.rb" | xargs rm
+find test/fixtures -name "*.yml" | xargs rm
+find test/models -name "*.rb" | xargs rm
+find test/system -name "*.rb" | xargs rm
