@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Reservation2 Services</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Reservation</th>
+      <th>Service</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @reservation2_services.each do |reservation2_service| %>
+      <tr>
+        <td><%= reservation2_service.reservation %></td>
+        <td><%= reservation2_service.service %></td>
+        <td><%= link_to 'Show', reservation2_service %></td>
+        <td><%= link_to 'Edit', edit_reservation2_service_path(reservation2_service) %></td>
+        <td><%= link_to 'Destroy', reservation2_service, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Reservation2 Service', new_reservation2_service_path %>

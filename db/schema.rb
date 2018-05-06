@@ -10,7 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_01_131541) do
+ActiveRecord::Schema.define(version: 2018_05_06_210935) do
+
+  create_table "reservation2_rooms", force: :cascade do |t|
+    t.integer "reservation_id"
+    t.integer "room_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["reservation_id"], name: "index_reservation2_rooms_on_reservation_id"
+    t.index ["room_id"], name: "index_reservation2_rooms_on_room_id"
+  end
+
+  create_table "reservation2_services", force: :cascade do |t|
+    t.integer "reservation_id"
+    t.integer "service_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["reservation_id"], name: "index_reservation2_services_on_reservation_id"
+    t.index ["service_id"], name: "index_reservation2_services_on_service_id"
+  end
 
   create_table "reservations", force: :cascade do |t|
     t.integer "user_id"
@@ -18,19 +36,7 @@ ActiveRecord::Schema.define(version: 2018_05_01_131541) do
     t.date "date_out"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "rooms_id"
-    t.index ["rooms_id"], name: "index_reservations_on_rooms_id"
-  end
-
-  create_table "roles", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "roles_users", id: false, force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "role_id", null: false
+    t.index ["user_id"], name: "index_reservations_on_user_id"
   end
 
   create_table "rooms", force: :cascade do |t|
@@ -45,9 +51,6 @@ ActiveRecord::Schema.define(version: 2018_05_01_131541) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "reservation_id"
-    t.integer "price"
-    t.index ["reservation_id"], name: "index_services_on_reservation_id"
   end
 
   create_table "users", force: :cascade do |t|

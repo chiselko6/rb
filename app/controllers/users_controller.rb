@@ -61,6 +61,14 @@ class UsersController < ApplicationController
     end
   end
 
+  def get_total_reservation_cost
+    user = User.find { |u| u.id == params['user'].to_i }
+    total_cost = user.reservations.inject(0) { |sum,r| sum + r.total_cost }
+    respond_to do |format|
+      format.json { render json: total_cost }
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user

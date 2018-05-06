@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
-  resources :reservations
-  resources :services
+
+  resources :reservation2_rooms
+  resources :reservation2_services
   resources :rooms
-  resources :roles
+  resources :services
+  resources :reservations
   resources :users
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  get 'total_cost/:user', to: 'users#get_total_reservation_cost', :defaults => { :format => 'json' }
+
 end
