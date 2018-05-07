@@ -34,15 +34,24 @@ deploy:
 	sqlite3 -echo db/development.sqlite3 "INSERT INTO reservations(user_id, date_in, date_out, created_at, updated_at) VALUES\
 		(1, DATE('now', '+1 month', '-1 day'), DATE('now', '+1 month', '+1 day'), DATETIME('now'), DATETIME('now')),\
 		(2, DATE('now', '+1 day'), DATE('now', '+5 days'), DATETIME('now'), DATETIME('now')),\
+		(2, DATE('now', '+7 day'), DATE('now', '+10 days'), DATETIME('now'), DATETIME('now')),\
 		(3, DATE('now', '-2 days'), DATE('now', '+3 days'), DATETIME('now'), DATETIME('now'))\
 	"
 	sqlite3 -echo db/development.sqlite3 "INSERT INTO reservation2_rooms(reservation_id, room_id, created_at, updated_at) VALUES\
 		(1, 1, DATETIME('now'), DATETIME('now')),\
 		(1, 3, DATETIME('now'), DATETIME('now')),\
-		(3, 2, DATETIME('now'), DATETIME('now'))\
+		(2, 3, DATETIME('now'), DATETIME('now')),\
+		(3, 3, DATETIME('now'), DATETIME('now')),\
+		(4, 5, DATETIME('now'), DATETIME('now'))\
 	"
 	sqlite3 -echo db/development.sqlite3 "INSERT INTO reservation2_services(reservation_id, service_id, created_at, updated_at) VALUES\
+		(1, 1, DATETIME('now'), DATETIME('now')),\
+		(1, 2, DATETIME('now'), DATETIME('now')),\
+		(1, 3, DATETIME('now'), DATETIME('now')),\
 		(2, 1, DATETIME('now'), DATETIME('now')),\
 		(2, 2, DATETIME('now'), DATETIME('now')),\
-		(2, 3, DATETIME('now'), DATETIME('now'))\
+		(3, 4, DATETIME('now'), DATETIME('now')),\
+		(4, 1, DATETIME('now'), DATETIME('now')),\
+		(4, 2, DATETIME('now'), DATETIME('now')),\
+		(4, 4, DATETIME('now'), DATETIME('now'))\
 	"
