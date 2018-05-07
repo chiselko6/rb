@@ -61,6 +61,19 @@ class RoomsController < ApplicationController
     end
   end
 
+  def is_free
+    room = Room.find(params[:room_id])
+    date_on = Date.parse(params[:date])
+    puts date_on
+    puts date_on.class
+    room_reservations = Reservation2Room.where(['room_id = ?', room.id])
+    is_free = true
+    room_reservations.each { |r| is_free = is_free && !(r.reservation.date_in <= date_on && date_on <= r.reservation.date_out) }
+    respond_to do |format|
+      format.json { render json: is_free }
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_room

@@ -61,6 +61,22 @@ class ReservationsController < ApplicationController
     end
   end
 
+  def date_income
+    date_on = params[:date]
+    if date_on != nil
+      reservations_on_date = Reservation.where(["date_in <= ? and ? <= date_out", date_on, date_on])
+    else
+      date_from = params[:date_from]
+      date_to = params[:date_to]
+      reservations_on_date = Reservation.where(["(date_in <= ? and ? <= date_out) or (date_in <= ? and ? <= date_out)", date_to, date_to, date_from, date_from])
+    end
+    total_income = reservations_on_date.inject(0) { |sum,r| sum + r.total_cost }
+
+    respond_to do |format|
+      format.json { render json: total_income }
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_reservation
