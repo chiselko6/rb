@@ -15,6 +15,7 @@ class ServicesTest < ApplicationSystemTestCase
     click_on "New Service"
 
     fill_in "Name", with: @service.name
+    fill_in "Price", with: @service.price
     click_on "Create Service"
 
     assert_text "Service was successfully created"
@@ -26,6 +27,7 @@ class ServicesTest < ApplicationSystemTestCase
     click_on "Edit", match: :first
 
     fill_in "Name", with: @service.name
+    fill_in "Price", with: @service.price
     click_on "Update Service"
 
     assert_text "Service was successfully updated"
