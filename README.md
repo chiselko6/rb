@@ -34,7 +34,13 @@
     - *updated_at*: datetime
   
 * Routes:
-
+  - Standart resources:
+    - `users`
+    - `reservations`
+    - `services`
+    - `rooms`
+    - `reservation2_services`
+    - `reservation2_rooms`
   - `total_cost/:user` - calculates total expenses of the given user across all his reserved services + rooms
   - `income/:date` - calculates hostel's income at a given date (includes all rooms + services reserved at that time)
   - `income/:date_from/:date_to` - calculates hostel's income at a specified date range across all reserved rooms + services falling in this period
