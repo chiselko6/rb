@@ -77,8 +77,8 @@ class RoomsController < ApplicationController
     reservations = Reservation.
       where(['date_in <= ? and ? <= date_out', date_on, date_on])
     booked_rooms = reservations.map { |r| r.reservation2_rooms.map { |r2r| r2r.room.id }}.flatten.uniq
-    free_rooms = Room.all.reject{ |r| puts r.id.class; booked_rooms.include? r.id }
-    
+    free_rooms = Room.all.reject{ |r| booked_rooms.include? r.id }
+
     respond_to do |format|
       format.json { render json: free_rooms }
     end
