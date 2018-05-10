@@ -2,7 +2,7 @@
 
 * Ruby version: `ruby 2.5.0p0`
 
-* Configuration: rails standart
+* Configuration: rails standard
 
 * Database creation: `make install`
 
@@ -34,7 +34,7 @@
     - *updated_at*: datetime
   
 * Routes:
-  - Standart resources:
+  - Standard resources:
     - `users`
     - `reservations`
     - `services`
