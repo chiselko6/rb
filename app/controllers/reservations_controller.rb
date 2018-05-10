@@ -64,13 +64,14 @@ class ReservationsController < ApplicationController
   def date_income
     date_on = params[:date]
     if date_on != nil
-      reservations_on_date = Reservation.where(["date_in <= ? and ? <= date_out", date_on, date_on])
+      date_from = date_on
+      date_to = date_on
     else
       date_from = params[:date_from]
       date_to = params[:date_to]
-      reservations_on_date = Reservation.where(["(date_in <= ? and ? <= date_out) or (date_in <= ? and ? <= date_out)", date_to, date_to, date_from, date_from])
     end
-    total_income = reservations_on_date.inject(0) { |sum,r| sum + r.total_cost }
+    reservations_on_date = Reservation.where(["(date_in <= ? and ? <= date_out) or (date_in <= ? and ? <= date_out)", date_to, date_to, date_from, date_from])
+    total_income = reservations_on_date.inject(0) { |sum,r| sum + r.cost_at_day(date_from, date_to) }
 
     respond_to do |format|
       format.json { render json: total_income }
