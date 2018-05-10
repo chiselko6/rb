@@ -21,5 +21,6 @@ Rails.application.routes.draw do
   # http://localhost:3000/is_free/2/2018-05-18 == true
   # http://localhost:3000/is_free/3/2018-05-18 == true
   # http://localhost:3000/is_free/3/2018-05-17 == false
+  get 'free_rooms/:date', to: 'rooms#free_rooms', :defaults => { :format => 'json' }
 
 end
