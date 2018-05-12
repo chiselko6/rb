@@ -78,3 +78,9 @@
       ```[{"id":1,"num":201,"rooms_count":2,"price":310,"created_at":"2018-05-10T00:00:00.000Z","updated_at":"2018-05-10T00:00:00.000Z"},
       {"id":2,"num":202,"rooms_count":2,"price":320,"created_at":"2018-05-10T00:00:00.000Z","updated_at":"2018-05-10T00:00:00.000Z"},
       {"id":4,"num":204,"rooms_count":3,"price":340,"created_at":"2018-05-10T00:00:00.000Z","updated_at":"2018-05-10T00:00:00.000Z"}]
+
+* UI Testing:
+  - Promo:
+    - After starting app, one can create a new reservation in `/reservations/new` with *user_id=1* and some valid dates
+    - Then go to `/reservation2_rooms/new` and book a room with *reservation_id=5*, *room_id=4*
+    - Now, you should go to `/total_cost/1` and see *3094*, as **promo** was activated for this user
