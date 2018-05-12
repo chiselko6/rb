@@ -15,8 +15,8 @@ class Reservation < ApplicationRecord
     then
       return 0
     else
-      return reservation2_rooms.inject(0) { |sum,e| sum + e.room.price * day_range } + \
-        reservation2_services.inject(0) { |sum,e| sum + (date_from == date_in ? e.service.price : 0) }
+      return reservation2_rooms.inject(0) { |sum,e| sum + e.price * day_range } + \
+        reservation2_services.inject(0) { |sum,e| sum + (date_from == date_in ? e.price : 0) }
     end
   end
 end

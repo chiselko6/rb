@@ -25,6 +25,10 @@ class Reservation2RoomsController < ApplicationController
   # POST /reservation2_rooms.json
   def create
     @reservation2_room = Reservation2Room.new(reservation2_room_params)
+    promo_percent = @reservation2_room.calculate_percentage_promo
+    if promo_percent > 0
+      @reservation2_room.promo = promo_percent
+    end
 
     respond_to do |format|
       if @reservation2_room.save
