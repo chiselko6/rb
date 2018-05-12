@@ -68,6 +68,20 @@ class UsersController < ApplicationController
     end
   end
 
+  def total_saved_by_promo
+    user = User.find { |u| u.id == params['user'].to_i }
+    respond_to do |format|
+      format.json { render json: user.total_saved_by_promo }
+    end
+  end
+
+  def has_promo
+    user = User.find { |u| u.id == params['user'].to_i }
+    respond_to do |format|
+      format.json { render json: user.has_promo? }
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user

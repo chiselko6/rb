@@ -32,5 +32,10 @@ Rails.application.routes.draw do
     # [{"id":1,"num":201,"rooms_count":2,"price":310,"created_at":"2018-05-10T00:00:00.000Z","updated_at":"2018-05-10T00:00:00.000Z"},
     #   {"id":2,"num":202,"rooms_count":2,"price":320,"created_at":"2018-05-10T00:00:00.000Z","updated_at":"2018-05-10T00:00:00.000Z"},
     #   {"id":4,"num":204,"rooms_count":3,"price":340,"created_at":"2018-05-10T00:00:00.000Z","updated_at":"2018-05-10T00:00:00.000Z"}]
+  get 'saved_by_promo/:user', to: 'users#total_saved_by_promo', :defaults => { :format => 'json' }
+  # http://localhost:3000/saved_by_promo/1 == 0
+  get 'has_promo/:user', to: 'users#has_promo', :defaults => { :format => 'json' }
+  # http://localhost:3000/has_promo/1 == true
+  # http://localhost:3000/has_promo/2 == true
 
 end

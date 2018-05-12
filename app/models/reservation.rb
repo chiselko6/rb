@@ -19,4 +19,10 @@ class Reservation < ApplicationRecord
         reservation2_services.inject(0) { |sum,e| sum + (date_from == date_in ? e.price : 0) }
     end
   end
+
+  def total_promo
+    day_range = (date_out - date_in).to_i + 1
+    return reservation2_rooms.inject(0) { |sum,e| sum + (e.starting_price - e.price) * day_range } + \
+      reservation2_services.inject(0) { |sum,e| sum + (e.starting_price - e.price) }
+  end
 end

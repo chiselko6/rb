@@ -81,6 +81,7 @@
 
 * UI Testing:
   - Promo:
-    - After starting app, one can create a new reservation in `/reservations/new` with *user_id=1* and some valid dates
+    - After starting app, one can create a new reservation in `/reservations/new` with *user_id=1* and *date_in=05/21/2018*, *date_out=05/22/2018*
     - Then go to `/reservation2_rooms/new` and book a room with *reservation_id=5*, *room_id=4*
     - Now, you should go to `/total_cost/1` and see *3094*, as **promo** was activated for this user
+    - Also, you can visit `/saved_by_promo/1` and should see *136*, which is 20% * 340 (room day price) * 2 (days of reservation)

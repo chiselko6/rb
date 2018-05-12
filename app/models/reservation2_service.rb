@@ -6,8 +6,12 @@ class Reservation2Service < ApplicationRecord
     service.price * (100 - (promo || 0)) / 100
   end
 
+  def starting_price
+    service.price
+  end
+
   def calculate_percentage_promo
-    if reservation.user.total_booked_price >= 500
+    if reservation.user.has_promo?
       10
     else
       0
