@@ -8,7 +8,7 @@
 
 * Database initialization: `make deploy`
 
-* Models:
+# Models:
 
   - **User**
     - *name*: string
@@ -33,7 +33,7 @@
     - *created_at*: datetime
     - *updated_at*: datetime
 
-* Routes:
+# Routes:
   - Standard resources:
     - `users`
     - `reservations`
@@ -79,7 +79,15 @@
       {"id":2,"num":202,"rooms_count":2,"price":320,"created_at":"2018-05-10T00:00:00.000Z","updated_at":"2018-05-10T00:00:00.000Z"},
       {"id":4,"num":204,"rooms_count":3,"price":340,"created_at":"2018-05-10T00:00:00.000Z","updated_at":"2018-05-10T00:00:00.000Z"}]
 
-* UI Testing:
+  - `/saved_by_promo/:user` - calculates total of user's saved money by promo
+
+    Default data doesn't provide any promo (you would see *0*), so you'd better see [section below](#ui-testing)
+
+  - `/has_promo/:user` - allows to see if user has enough payment history to obtain a promo
+
+    Default data users have enough history to get a promo (you would see *true*)
+
+# UI Testing:
   - Promo:
     - After starting app, one can create a new reservation in `/reservations/new` with *user_id=1* and *date_in=05/21/2018*, *date_out=05/22/2018*
     - Then go to `/reservation2_rooms/new` and book a room with *reservation_id=5*, *room_id=4*
