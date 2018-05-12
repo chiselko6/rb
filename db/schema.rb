@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_07_192613) do
+ActiveRecord::Schema.define(version: 2018_05_12_114056) do
 
   create_table "reservation2_rooms", force: :cascade do |t|
     t.integer "reservation_id"
     t.integer "room_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "promo"
     t.index ["reservation_id"], name: "index_reservation2_rooms_on_reservation_id"
     t.index ["room_id"], name: "index_reservation2_rooms_on_room_id"
   end
@@ -26,6 +27,7 @@ ActiveRecord::Schema.define(version: 2018_05_07_192613) do
     t.integer "service_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "promo"
     t.index ["reservation_id"], name: "index_reservation2_services_on_reservation_id"
     t.index ["service_id"], name: "index_reservation2_services_on_service_id"
   end
