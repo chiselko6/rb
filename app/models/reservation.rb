@@ -1,7 +1,7 @@
 class Reservation < ApplicationRecord
   belongs_to :user
-  has_many :services, through: :reservation2_services
-  has_many :rooms, through: :reservation2_rooms
+  has_many :reservation2_services
+  has_many :reservation2_rooms
 
   def total_cost
     cost_at_day date_in, date_out
