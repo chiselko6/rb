@@ -42,9 +42,9 @@ deploy:
 		(3, '2018-05-08', '2018-05-13', '2018-05-10', '2018-05-10')\
 	"
 	sqlite3 -echo db/development.sqlite3 "INSERT INTO comments(user_id, text, commentable_type, commentable_id, created_at, updated_at) VALUES\
-		(1, 'Great room! Thanks a lot!', 'rooms', 1, '2018-05-10', '2018-05-10'),\
-		(1, 'What a great pleasure to live there!', 'rooms', 3, '2018-05-10', '2018-05-10'),\
-		(3, 'Awful game!', 'services', 4, '2018-05-10', '2018-05-10')\
+		(1, 'Great room! Thanks a lot!', 'Room', 1, '2018-05-10', '2018-05-10'),\
+		(1, 'What a great pleasure to live there!', 'Room', 3, '2018-05-10', '2018-05-10'),\
+		(3, 'Awful game!', 'Service', 4, '2018-05-10', '2018-05-10')\
 	"
 	sqlite3 -echo db/development.sqlite3 "INSERT INTO reservation2_rooms(reservation_id, room_id, created_at, updated_at) VALUES\
 		(1, 1, '2018-05-10', '2018-05-10'),\
