@@ -5,6 +5,7 @@ models:
 	rails generate scaffold Reservation user:references date_in:date date_out:date
 	rails generate scaffold Service name:string price:integer
 	rails generate scaffold Room num:integer rooms_count:integer price:integer
+	rails generate scaffold Comment text:text user:references commentable:references{polymorphic}
 
 	rails generate scaffold Reservation2Service reservation:references service:references promo:integer
 	rails generate scaffold Reservation2Room reservation:references room:references promo:integer
@@ -39,6 +40,11 @@ deploy:
 		(2, '2018-05-11', '2018-05-15', '2018-05-10', '2018-05-10'),\
 		(2, '2018-05-17', '2018-05-20', '2018-05-10', '2018-05-10'),\
 		(3, '2018-05-08', '2018-05-13', '2018-05-10', '2018-05-10')\
+	"
+	sqlite3 -echo db/development.sqlite3 "INSERT INTO comments(user_id, text, commentable_type, commentable_id, created_at, updated_at) VALUES\
+		(1, 'Great room! Thanks a lot!', 'rooms', 1, '2018-05-10', '2018-05-10'),\
+		(1, 'What a great pleasure to live there!', 'rooms', 3, '2018-05-10', '2018-05-10'),\
+		(3, 'Awful game!', 'services', 4, '2018-05-10', '2018-05-10')\
 	"
 	sqlite3 -echo db/development.sqlite3 "INSERT INTO reservation2_rooms(reservation_id, room_id, created_at, updated_at) VALUES\
 		(1, 1, '2018-05-10', '2018-05-10'),\
