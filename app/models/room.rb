@@ -1,3 +1,3 @@
 class Room < ApplicationRecord
-  has_many :reservation2_rooms
+  has_many :reservations, through: :reservation2_rooms
 end

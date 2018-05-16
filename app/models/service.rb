@@ -1,3 +1,3 @@
 class Service < ApplicationRecord
-  has_many :reservation2_services
+  has_many :reservations, through: :reservation2_services
 end
