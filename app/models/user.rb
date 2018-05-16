@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_many :reservations
+  has_many :comments
 
   def total_booked_price
     reservations.inject(0) { |sum,r| sum + r.total_cost }

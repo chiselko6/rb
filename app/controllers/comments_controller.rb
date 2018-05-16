@@ -52,7 +52,26 @@ class CommentsController < ApplicationController
   end
 
   def user_comments
-    
+    user = User.find(params[:user_id])
+    respond_to do |format|
+      format.json { render json: pure_comments(user.comments) }
+    end
+  end
+
+  def room_comments
+    room = Room.find(params[:room_id])
+
+    respond_to do |format|
+      format.json { render json: pure_comments(room.comments) }
+    end
+  end
+
+  def service_comments
+    service = Service.find(params[:service_id])
+
+    respond_to do |format|
+      format.json { render json: pure_comments(service.comments) }
+    end
   end
 
   # DELETE /comments/1
@@ -74,5 +93,9 @@ class CommentsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def comment_params
       params.require(:comment).permit(:text, :user_id, :commentable_id, :commentable_type)
+    end
+
+    def pure_comments(comments)
+      comments.map { |c| c.text }
     end
 end

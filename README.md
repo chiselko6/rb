@@ -19,6 +19,10 @@
     - *num*: integer - appartment number in the hostel
     - *rooms_count*: integer - # rooms in the appartment
     - *price*: integer - one-off fee
+  - **Comment**
+    - *text*: text - comment's content
+    - *commentable_id* - polymorphic relationship
+    - *commentable_type* - polymorphic relationship
   - **Reservation**
     - *user_id*: integer - references **User** having booked something
     - *date_in*: date - when **User** starts using it
@@ -39,6 +43,7 @@
     - `reservations`
     - `services`
     - `rooms`
+    - `comments`
     - `reservation2_services`
     - `reservation2_rooms`
   - `/total_cost/:user` - calculates total expenses of the given user across all his reserved services + rooms
@@ -86,6 +91,24 @@
   - `/has_promo/:user` - allows to see if user has enough payment history to obtain a promo
 
     Default data users have enough history to get a promo (you would see *true*)
+
+  - `/user_comments/:user_id` - get all comments (only content) by the user
+
+    Default data comments:
+    - `/user_comments/1` -> `["Great room! Thanks a lot!","What a great pleasure to live there!"]`
+    - `/user_comments/2` -> `[]`
+
+  - `/room_comments/:room_id` - get all comments (only content) for a given room
+
+    Default data comments:
+    - `/room_comments/1` -> `["Great room! Thanks a lot!"]`
+
+  - `/service_comments/:service_id` - get all comments (only content) for a given service
+
+    Default data comments:
+    - `/service_comments/1` -> `[]`
+    - `/service_comments/4` -> `["Awful game!"]`
+
 
 # UI Testing:
   - Promo:

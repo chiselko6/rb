@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :comments
   resources :reservation2_rooms
   resources :reservation2_services
   resources :rooms
@@ -37,5 +38,18 @@ Rails.application.routes.draw do
   get 'has_promo/:user', to: 'users#has_promo', :defaults => { :format => 'json' }
   # http://localhost:3000/has_promo/1 == true
   # http://localhost:3000/has_promo/2 == true
+  get 'user_comments/:user_id', to: 'comments#user_comments', :defaults => { :format => 'json' }
+  # http://localhost:3000/user_comments/1 =
+    # ["Great room! Thanks a lot!","What a great pleasure to live there!"]
+  # http://localhost:3000/user_comments/2 =
+    # []
+  get 'room_comments/:room_id', to: 'comments#room_comments', :defaults => { :format => 'json' }
+  # http://localhost:3000/room_comments/1 =
+    # ["Great room! Thanks a lot!"]
+  get 'service_comments/:service_id', to: 'comments#service_comments', :defaults => { :format => 'json' }
+  # http://localhost:3000/service_comments/1
+    # []
+  # http://localhost:3000/service_comments/4
+    # ["Awful game!"]
 
 end
